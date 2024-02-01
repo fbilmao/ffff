@@ -6,12 +6,10 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<meta name="description" content="" />
 		<meta name="author" content="" />
-		
 		<!-- ================== BEGIN core-css ================== -->
 		<link href="assets/css/vendor.min.css" rel="stylesheet" />
 		<link href="assets/css/app.min.css" rel="stylesheet" />
 		<!-- ================== END core-css ================== -->
-
 		<script>
 		    document.addEventListener('DOMContentLoaded', function () {
 		        var placeholders = [" Welcome!", " insert meme string", " Main"," Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
@@ -32,34 +30,36 @@
                 'theme-blue',
                 'theme-purple',
                 'theme-indigo',
-                'theme-black',
-                'theme-gray-500',
             ];
-
             var currentThemeIndex = 0;
-
-            // Get the "Switch Theme" menu item
             var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
-
-            // Get the notification container
             var notificationContainer = document.querySelector('.dropdown-menu');
-
-            // Add a click event listener to handle theme switching and notifications
+            var isRGBModeEnabled = false;
+            var lastNotificationType = '';
+            function switchTheme() {
+                if (isRGBModeEnabled) {
+                    document.body.classList.remove(themes[currentThemeIndex]);
+                    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                    document.body.classList.add(themes[currentThemeIndex]);
+                    var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+                    if (lastNotificationType !== message) {
+                        showNotification(message);
+                        lastNotificationType = message;
+                    }
+                }
+            }
+            var switchInterval = setInterval(switchTheme, 100);
             switchThemeMenuItem.addEventListener('click', function () {
-                // Remove the current theme class
-                document.body.classList.remove(themes[currentThemeIndex]);
-
-                // Increment the theme index
-                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-
-                // Add the new theme class
-                document.body.classList.add(themes[currentThemeIndex]);
-
-                // Display notification
-                showNotification('Switched to ' + themes[currentThemeIndex]);
+                isRGBModeEnabled = !isRGBModeEnabled;
+                var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+                if (lastNotificationType !== message) {
+                    showNotification(message);
+                    lastNotificationType = message;
+                }
+                if (!isRGBModeEnabled) {
+                    clearInterval(switchInterval);
+                }
             });
-
-            // Function to display notifications
             function showNotification(message) {
                 var notificationItem = document.createElement('a');
                 notificationItem.href = '#';
@@ -78,7 +78,7 @@
                 `;
                 notificationContainer.appendChild(notificationItem);
             }
-        }); 
+        });
     </script>
 	</head>
 	<body class="theme-cyan">
@@ -494,7 +494,7 @@
 				<!-- END menu -->
 				<div class="p-3 px-4 mt-auto">
 					<a href="../../documentation/index.html" class="btn d-block btn-outline-theme">
-						<i class="fa fa-code-branch me-2 ms-n2 opacity-5"></i> Documentation
+						<i class="bi bi-discord me-2 ms-n2"></i> Official Discord
 					</a>
 				</div>
 			</div>
