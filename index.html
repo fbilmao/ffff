@@ -11,7 +11,22 @@
 	<link href="assets/css/vendor.min.css" rel="stylesheet" />
 	<link href="assets/css/app.min.css" rel="stylesheet" />
 	<!-- ================== END core-css ================== -->
-	
+
+	<script>
+	    document.addEventListener('DOMContentLoaded', function () {
+	        // List of placeholder options
+	        var placeholders = ["placeholder1", "example1", "idk2"];
+
+	        // Get the element with the class "brand-text"
+	        var brandText = document.querySelector('.brand-text');
+
+	        // Choose a random placeholder from the list
+	        var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+
+	        // Replace the placeholder in the HTML with the randomly chosen string
+	        brandText.innerHTML = randomPlaceholder;
+	    });
+	</script>	
 </head>
 <body>
 	<!-- BEGIN #app -->
@@ -44,7 +59,7 @@
 					<span class="brand-img">
 						<span class="brand-img-text text-theme">1x</span>
 					</span>
-					<span class="brand-text">1x</span>
+					<span class="brand-text">%placeholder_list%</span>
 				</a>
 			</div>
 			<!-- END brand -->
@@ -218,7 +233,7 @@
 			<div class="app-sidebar-content" data-scrollbar="true" data-height="100%">
 				<!-- BEGIN menu -->
 				<div class="menu">
-					<div class="menu-header">Navigation</div>
+					<div class="menu-header">Main</div>
 					<div class="menu-item active">
 						<a href="index.html" class="menu-link">
 							<span class="menu-icon"><i class="bi bi-house"></i></span>
@@ -247,7 +262,7 @@
 							</div>
 							<div class="menu-item">
 								<a href="email_detail.html" class="menu-link">
-									<span class="menu-text">Detail</span>
+									<span class="menu-text">Details & disclaimer</span>
 								</a>
 							</div>
 						</div>
