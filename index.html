@@ -14,16 +14,9 @@
 
 	<script>
 	    document.addEventListener('DOMContentLoaded', function () {
-	        // List of placeholder options
-	        var placeholders = ["Welcome!", "error if you see this then we're f.", "Main",":D", "Operating since 1991 !", "Hosted on the moon FBI servers !"];
-
-	        // Get the element with the class "brand-text"
+	        var placeholders = ["Welcome!", "error if you see this we f", "Main",":D", "Operating since 1991!", "Hosted on moon FBI servers!"];
 	        var brandText = document.querySelector('.brand-text');
-
-	        // Choose a random placeholder from the list
 	        var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-
-	        // Replace the placeholder in the HTML with the randomly chosen string
 	        brandText.innerHTML = randomPlaceholder;
 	    });
 	</script>	
