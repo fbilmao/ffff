@@ -1,7 +1,7 @@
 body {
   background: #333;
   height: 100vh;
-  /* cursor: none; */
+  cursor: none;
 }
 .cursor {
   position: absolute;
@@ -54,7 +54,7 @@ body {
   }
 }
 
-.expand {
+.cursor-expand {
   animation: cursorAnim3 0.5s forwards;
   border: 1px solid red;
 }
