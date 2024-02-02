@@ -18,7 +18,7 @@ body {
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 8px solid #38bcfc; /* Updated color to #38bcfc */
+  border: 8px solid #38bcfc;
   border-radius: 50%;
   opacity: 0.5;
   animation: cursorAnim2 0.5s infinite alternate;
@@ -57,5 +57,5 @@ body {
 
 .cursor-expand {
   animation: cursorAnim3 0.5s forwards;
-  border: 1px solid #38bcfc; /* Updated color to #38bcfc */
+  border: 1px solid #38bcfc;
 }
