@@ -2,6 +2,7 @@ body {
   background: #333;
   height: 100vh;
 }
+
 .cursor {
   position: absolute;
   width: 20px;
@@ -11,12 +12,13 @@ body {
   transition: 0.2s ease-out;
   animation: cursorAnim 0.5s infinite alternate;
 }
+
 .cursor::after {
   content: '';
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 8px solid lightblue;
+  border: 8px solid #38bcfc; /* Updated color to #38bcfc */
   border-radius: 50%;
   opacity: 0.5;
   animation: cursorAnim2 0.5s infinite alternate;
@@ -30,6 +32,7 @@ body {
     transform: scale(0.7);
   }
 }
+
 @keyframes cursorAnim2 {
   from {
     transform: scale(1);
@@ -38,6 +41,7 @@ body {
     transform: scale(0.4);
   }
 }
+
 @keyframes cursorAnim3 {
   0% {
     transform: scale(1);
@@ -53,5 +57,5 @@ body {
 
 .cursor-expand {
   animation: cursorAnim3 0.5s forwards;
-  border: 1px solid lightblue;
+  border: 1px solid #38bcfc; /* Updated color to #38bcfc */
 }
