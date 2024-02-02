@@ -16,10 +16,9 @@ body {
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 8px solid blue;
+  border: 8px solid cyan;
   border-radius: 50%;
   opacity: 0.5;
-  top: -8px;
   animation: cursorAnim2 0.5s infinite alternate;
 }
 
@@ -54,5 +53,5 @@ body {
 
 .cursor-expand {
   animation: cursorAnim3 0.5s forwards;
-  border: 1px solid blue;
+  border: 1px solid lightblue;
 }
