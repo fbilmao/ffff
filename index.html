@@ -442,23 +442,17 @@
 
 			</p>
 			<div class="cursor"></div>
-		    <script>
-		        const cursor = document.querySelector('.cursor');
-		        let debounceTimeout;
-
-		        document.addEventListener('mousemove', e => {
-		            clearTimeout(debounceTimeout);
-		            debounceTimeout = setTimeout(() => {
-		                cursor.style.display = 'block';
-		                cursor.style.top = e.pageY + 'px';
-		                cursor.style.left = e.pageX + 'px';
-		            }, 10); // Adjust the debounce time as needed
-		        });
-
-		        document.addEventListener('mouseleave', () => {
-		            cursor.style.display = 'none';
-		        });
-		    </script>
+    		<script>
+      			const cursor = document.querySelector('.cursor');
+      			document.addEventListener('mousemove', e => {
+       				cursor.style.display = 'block';
+       				cursor.style.top = e.pageY + 'px';
+       				cursor.style.left = e.pageX + 'px';
+      			});
+      			document.addEventListener('mouseleave', e => {
+       				cursor.style.display = 'none';
+      			});
+    		</script>
 			<!-- BEGIN #header -->
 		</div>
 		<!-- END #content -->
