@@ -10,74 +10,86 @@
     <link href="assets/css/vendor.min.css" rel="stylesheet" />
     <link href="assets/css/app.min.css" rel="stylesheet" />
     <!-- ================== END core-css ================== -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var placeholders = [" Welcome!", " insert meme string", " Main"," Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
-            var brandText = document.querySelector('.brand-text');
-            var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-            brandText.innerHTML = randomPlaceholder;
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-            var themes = [
-                'theme-red',
-                'theme-pink',
-                'theme-orange',
-                'theme-yellow',
-                'theme-lime',
-                'theme-green',
-                'theme-teal',
-                'theme-cyan',
-                'theme-blue',
-                'theme-purple',
-                'theme-indigo',
-            ];
-            var currentThemeIndex = 0;
-            var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
-            var notificationContainer = document.querySelector('.dropdown-menu');
-            var isRGBModeEnabled = false;
-            var lastNotificationItem = null;
-            function switchTheme() {
-                if (isRGBModeEnabled) {
-                    document.body.classList.remove(themes[currentThemeIndex]);
-                    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-                    document.body.classList.add(themes[currentThemeIndex]);
-                    var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
-                    showNotification(message);
-                }
-            }
-            var switchInterval = setInterval(switchTheme, 100);
-            switchThemeMenuItem.addEventListener('click', function () {
-                isRGBModeEnabled = !isRGBModeEnabled;
-                var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
-                showNotification(message);
-                if (!isRGBModeEnabled) {
-                    clearInterval(switchInterval);
-                }
-            });
-            function showNotification(message) {
-                if (lastNotificationItem) {
-                    notificationContainer.removeChild(lastNotificationItem);
-                }
-                var notificationItem = document.createElement('a');
-                notificationItem.href = '#';
-                notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
-                notificationItem.innerHTML = `
-                    <div class="fs-20px">
-                        <i class="bi bi-eyedropper text-theme"></i>
-                    </div>
-                    <div class="flex-1 flex-wrap ps-3">
-                        <div class="mb-1 text-white">${message}</div>
-                        <div class="small">JUST NOW</div>
-                    </div>
-                    <div class="ps-2 fs-16px">
-                        <i class="bi bi-chevron-right"></i>
-                    </div>
-                `;
-                lastNotificationItem = notificationItem;
-                notificationContainer.appendChild(notificationItem);
-            }
-        });
-    </script>
+	<script>
+	    document.addEventListener('DOMContentLoaded', function () {
+	        var placeholders = [" Welcome!", " insert meme string", " Main"," Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
+	        var brandText = document.querySelector('.brand-text');
+	        var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+	        brandText.innerHTML = randomPlaceholder;
+	    });
+
+	    document.addEventListener('DOMContentLoaded', function () {
+	        var themes = [
+	            'theme-red',
+	            'theme-pink',
+	            'theme-orange',
+	            'theme-yellow',
+	            'theme-lime',
+	            'theme-green',
+	            'theme-teal',
+	            'theme-cyan',
+	            'theme-blue',
+	            'theme-purple',
+	            'theme-indigo',
+	        ];
+	        var currentThemeIndex = 0;
+	        var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
+	        var notificationContainer = document.querySelector('.dropdown-menu');
+	        var isRGBModeEnabled = false;
+	        var lastNotificationItem = null;
+	        var notificationShownAfterSwitch = false;
+
+	        function switchTheme() {
+	            if (isRGBModeEnabled) {
+	                document.body.classList.remove(themes[currentThemeIndex]);
+	                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+	                document.body.classList.add(themes[currentThemeIndex]);
+	                if (!notificationShownAfterSwitch) {
+	                    var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+	                    showNotification(message);
+	                    notificationShownAfterSwitch = true;
+	                }
+	            }
+	        }
+
+	        var switchInterval = setInterval(switchTheme, 100);
+
+	        switchThemeMenuItem.addEventListener('click', function () {
+	            isRGBModeEnabled = !isRGBModeEnabled;
+	            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+	            showNotification(message);
+	            notificationShownAfterSwitch = false;
+
+	            if (!isRGBModeEnabled) {
+	                clearInterval(switchInterval);
+	            }
+	        });
+
+	        function showNotification(message) {
+	            if (lastNotificationItem) {
+	                notificationContainer.removeChild(lastNotificationItem);
+	            }
+	            var notificationItem = document.createElement('a');
+	            notificationItem.href = '#';
+	            notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
+	            notificationItem.innerHTML = `
+	                <div class="fs-20px">
+	                    <i class="bi bi-eyedropper text-theme"></i>
+	                </div>
+	                <div class="flex-1 flex-wrap ps-4">
+	                    <div class="mb-1 text-white">${message}</div>
+	                    <div class="small">JUST NOW</div>
+	                </div>
+	                <div class="ps-2 fs-16px">
+	                    <i class="bi bi-chevron-right"></i>
+	                </div>
+	            `;
+	            lastNotificationItem = notificationItem;
+	            notificationContainer.appendChild(notificationItem);
+	        }
+	    });
+	</script>
+
 	</head>
 	<body class="theme-cyan">
 		<!-- BEGIN #app -->
@@ -147,7 +159,7 @@
 		                            <a href="#" class="dropdown-item text-decoration-none p-3 bg-none">
 		                            	<div class="position-relative">
 		                            		<i class="bi bi-circle-fill position-absolute text-theme top-0 mt-n2 me-n2 fs-6px d-block text-center w-100"></i>
-		                                	<i class="bi bi-shuffle h2 opacity-5 d-block my-1"></i>
+		                                	<i class="bi bi-eyedropper h2 opacity-5 d-block my-1"></i>
 		                                </div>
 		                                <div class="fw-500 fs-10px text-white">RGB Mode</div>
 		                            </a>
@@ -363,12 +375,6 @@
 								</a>
 							</div>
 						</div>
-					</div>
-					<div class="menu-item">
-						<a href="map.html" class="menu-link">
-							<span class="menu-icon"><i class="bi bi-compass"></i></span>
-							<span class="menu-text">Map</span>
-						</a>
 					</div>
 					<div class="menu-item has-sub">
 						<a href="#" class="menu-link">
