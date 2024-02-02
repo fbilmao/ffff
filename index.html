@@ -41,7 +41,13 @@
 	        }
 
 	        var brandText = document.getElementById('brand-text');
-	        brandText.innerHTML = updateTime();
+
+	        function updateBrandText() {
+	            brandText.innerHTML = updateTime();
+	        }
+
+	        // Update the time every second
+	        var timeInterval = setInterval(updateBrandText, 1000);
 
 	        brandText.addEventListener('mouseover', function () {
 	            // Change content to a random placeholder text when hovered
@@ -163,7 +169,7 @@
 						<span class="brand-img">
 							<span class="brand-img-text text-theme theme-cyan">1x</span>
 						</span>
-						<span id="brand-text" class="brand-text"></span>
+						<span id="brand-text" class="brand-text">Loading...</span>
 					</a>
 				</div>
 				<!-- END brand -->
