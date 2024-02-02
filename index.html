@@ -31,6 +31,7 @@
             var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
             brandText.innerHTML = randomPlaceholder;
         });
+
         document.addEventListener('DOMContentLoaded', function () {
             var themes = [
                 'theme-red',
@@ -48,7 +49,7 @@
             var currentThemeIndex = 0;
             var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
             var notificationContainer = document.querySelector('.dropdown-menu');
-            var isRGBModeEnabled = true;
+            var isRGBModeEnabled = false;
             var lastNotificationItem = null;
             var notificationShownAfterSwitch = false;
 
@@ -76,6 +77,10 @@
                 if (!isRGBModeEnabled) {
                     clearInterval(switchInterval);
                 }
+
+                // Change the image source based on RGB mode
+                var profileImage = document.getElementById('profileImage');
+                profileImage.src = isRGBModeEnabled ? 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar_rgb.gif' : 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar.gif';
             });
 
             function showNotification(message) {
