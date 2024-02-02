@@ -15,74 +15,74 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="assets/plugins/jvectormap-next/jquery-jvectormap.min.js"></script>
 	<script src="assets/plugins/jvectormap-content/world-mill.js"></script>
-	    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var placeholders = [" Welcome!", " insert meme string", " Main"," Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
-            var brandText = document.querySelector('.brand-text');
-            var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-            brandText.innerHTML = randomPlaceholder;
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-            var themes = [
-                'theme-red',
-                'theme-pink',
-                'theme-orange',
-                'theme-yellow',
-                'theme-lime',
-                'theme-green',
-                'theme-teal',
-                'theme-cyan',
-                'theme-blue',
-                'theme-purple',
-                'theme-indigo',
-            ];
-            var currentThemeIndex = 0;
-            var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
-            var notificationContainer = document.querySelector('.dropdown-menu');
-            var isRGBModeEnabled = false;
-            var lastNotificationItem = null;
-            function switchTheme() {
-                if (isRGBModeEnabled) {
-                    document.body.classList.remove(themes[currentThemeIndex]);
-                    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-                    document.body.classList.add(themes[currentThemeIndex]);
-                    var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
-                    showNotification(message);
-                }
-            }
-            var switchInterval = setInterval(switchTheme, 100);
-            switchThemeMenuItem.addEventListener('click', function () {
-                isRGBModeEnabled = !isRGBModeEnabled;
+	<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var placeholders = [" Welcome!", " insert meme string", " Main"," Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
+        var brandText = document.querySelector('.brand-text');
+        var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+        brandText.innerHTML = randomPlaceholder;
+    });
+    document.addEventListener('DOMContentLoaded', function () {
+        var themes = [
+            'theme-red',
+            'theme-pink',
+            'theme-orange',
+            'theme-yellow',
+            'theme-lime',
+            'theme-green',
+            'theme-teal',
+            'theme-cyan',
+            'theme-blue',
+            'theme-purple',
+            'theme-indigo',
+        ];
+        var currentThemeIndex = 0;
+        var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
+        var notificationContainer = document.querySelector('.dropdown-menu');
+        var isRGBModeEnabled = false;
+        var lastNotificationItem = null;
+        function switchTheme() {
+            if (isRGBModeEnabled) {
+                document.body.classList.remove(themes[currentThemeIndex]);
+                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+                document.body.classList.add(themes[currentThemeIndex]);
                 var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
                 showNotification(message);
-                if (!isRGBModeEnabled) {
-                    clearInterval(switchInterval);
-                }
-            });
-            function showNotification(message) {
-                if (lastNotificationItem) {
-                    notificationContainer.removeChild(lastNotificationItem);
-                }
-                var notificationItem = document.createElement('a');
-                notificationItem.href = '#';
-                notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
-                notificationItem.innerHTML = `
-                    <div class="fs-20px">
-                        <i class="bi bi-eyedropper text-theme"></i>
-                    </div>
-                    <div class="flex-1 flex-wrap ps-3">
-                        <div class="mb-1 text-white">${message}</div>
-                        <div class="small">JUST NOW</div>
-                    </div>
-                    <div class="ps-2 fs-16px">
-                        <i class="bi bi-chevron-right"></i>
-                    </div>
-                `;
-                lastNotificationItem = notificationItem;
-                notificationContainer.appendChild(notificationItem);
+            }
+        }
+        var switchInterval = setInterval(switchTheme, 100);
+        switchThemeMenuItem.addEventListener('click', function () {
+            isRGBModeEnabled = !isRGBModeEnabled;
+            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+            showNotification(message);
+            if (!isRGBModeEnabled) {
+                clearInterval(switchInterval);
             }
         });
-    </script>
+        function showNotification(message) {
+            if (lastNotificationItem) {
+                notificationContainer.removeChild(lastNotificationItem);
+            }
+            var notificationItem = document.createElement('a');
+            notificationItem.href = '#';
+            notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
+            notificationItem.innerHTML = `
+                <div class="fs-20px">
+                    <i class="bi bi-eyedropper text-theme"></i>
+                </div>
+                <div class="flex-1 flex-wrap ps-3">
+                    <div class="mb-1 text-white">${message}</div>
+                    <div class="small">JUST NOW</div>
+                </div>
+                <div class="ps-2 fs-16px">
+                    <i class="bi bi-chevron-right"></i>
+                </div>
+            `;
+            lastNotificationItem = notificationItem;
+            notificationContainer.appendChild(notificationItem);
+        }
+    });
+    </script>	
 	<script>
 	    $(document).ready(function () {
 	        function initializeMap(latitude, longitude, cityName) {
