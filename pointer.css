@@ -16,7 +16,7 @@ body {
   position: absolute;
   width: 20px;
   height: 20px;
-  border: 8px solid cyan;
+  border: 8px solid lightblue;
   border-radius: 50%;
   opacity: 0.5;
   animation: cursorAnim2 0.5s infinite alternate;
