@@ -49,7 +49,7 @@
 	            brandText.innerHTML = updateTime();
 	            brandText.classList.remove('blur-text'); // Remove blur class
 	        }
-	        timeInterval = setInterval(updateBrandText, 1000);
+	        timeInterval = setInterval(updateBrandText, 500);
 	        brandText.addEventListener('mouseover', function () {
 	            if (!brandText.classList.contains('blur-text')) {
 	                brandText.classList.add('blur-text'); // Add blur class only if not already blurred
@@ -68,7 +68,7 @@
 	                updateBrandText();
 	                brandText.classList.remove('blur-text'); // Remove blur class
 	                // Resume updating time after easing out
-	                timeInterval = setInterval(updateBrandText, 1000);
+	                timeInterval = setInterval(updateBrandText, 500);
 	            }, 300);
 	        });
 	    });
