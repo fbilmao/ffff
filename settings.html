@@ -24,85 +24,119 @@
             color: initial !important;
         }
     </style>
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var placeholders = [" Hiii!", " insert meme string", " Main", " Ethical and leet", " Operating since 1337!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " You are editing your settings", " In settings menu", " Setting up stuff"];
-            var brandText = document.querySelector('.brand-text');
-            var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-            brandText.innerHTML = randomPlaceholder;
-        });
-        document.addEventListener('DOMContentLoaded', function () {
-            var themes = [
-                'theme-red',
-                'theme-orange',
-                'theme-yellow',
-                'theme-lime',
-                'theme-green',
-                'theme-teal',
-                'theme-cyan',
-                'theme-blue',
-                'theme-purple',
-                'theme-pink',
-                'theme-indigo',
-            ];
-            var currentThemeIndex = 0;
-            var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
-            var notificationContainer = document.querySelector('.dropdown-menu');
-            var isRGBModeEnabled = true;
-            var lastNotificationItem = null;
-            var notificationShownAfterSwitch = false;
+	<script>
+	    document.addEventListener('DOMContentLoaded', function () {
+	        function updateTime() {
+	            var currentTime = new Date();
+	            var hours = currentTime.getHours();
+	            var minutes = currentTime.getMinutes();
+	            var seconds = currentTime.getSeconds();
 
-            function switchTheme() {
-                if (isRGBModeEnabled) {
-                    document.body.classList.remove(themes[currentThemeIndex]);
-                    currentThemeIndex = (currentThemeIndex + 1) % themes.length;
-                    document.body.classList.add(themes[currentThemeIndex]);
-                    if (!notificationShownAfterSwitch) {
-                        var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
-                        showNotification(message);
-                        notificationShownAfterSwitch = true;
-                    }
-                }
-            }
+	            // Pad single-digit minutes and seconds with a leading zero
+	            minutes = (minutes < 10) ? "0" + minutes : minutes;
+	            seconds = (seconds < 10) ? "0" + seconds : seconds;
 
-            var switchInterval = setInterval(switchTheme, 150);
+	            // Display time in format HH:mm:ss
+	            return hours + ":" + minutes + ":" + seconds;
+	        }
 
-            switchThemeMenuItem.addEventListener('click', function () {
-                isRGBModeEnabled = !isRGBModeEnabled;
-                var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
-                showNotification(message);
-                notificationShownAfterSwitch = false;
+	        var brandText = document.getElementById('brand-text');
 
-                if (!isRGBModeEnabled) {
-                    clearInterval(switchInterval);
-                }
-            });
+	        function updateBrandText() {
+	            brandText.innerHTML = updateTime();
+	        }
 
-            function showNotification(message) {
-                if (lastNotificationItem) {
-                    notificationContainer.removeChild(lastNotificationItem);
-                }
-                var notificationItem = document.createElement('a');
-                notificationItem.href = '#';
-                notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
-                notificationItem.innerHTML = `
-                    <div class="fs-20px">
-                        <i class="bi bi-eyedropper text-theme"></i>
-                    </div>
-                    <div class="flex-1 flex-wrap ps-4">
-                        <div class="mb-1 text-white">${message}</div>
-                        <div class="small">JUST NOW</div>
-                    </div>
-                    <div class="ps-2 fs-16px">
-                        <i class="bi bi-chevron-right"></i>
-                    </div>
-                `;
-                lastNotificationItem = notificationItem;
-                notificationContainer.appendChild(notificationItem);
-            }
-        });
-    </script>
+	        // Update the time every second
+	        var timeInterval = setInterval(updateBrandText, 1000);
 
+	        brandText.addEventListener('mouseover', function () {
+	            // Change content to a random placeholder text when hovered
+	            var placeholders = [" Welcome!", " insert meme string", " Main", " Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
+	            var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+	            brandText.innerHTML = randomPlaceholder;
+	        });
+
+	        brandText.addEventListener('mouseout', function () {
+	            // Revert to displaying current time when not hovered
+	            brandText.innerHTML = updateTime();
+	        });
+	    });
+
+	    document.addEventListener('DOMContentLoaded', function () {
+	        var themes = [
+	            'theme-red',
+	            'theme-orange',
+	            'theme-yellow',
+	            'theme-lime',
+	            'theme-green',
+	            'theme-teal',
+	            'theme-cyan',
+	            'theme-blue',
+	            'theme-purple',
+	            'theme-pink',
+	            'theme-indigo',
+	        ];
+	        var currentThemeIndex = 0;
+	        var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
+	        var notificationContainer = document.querySelector('.dropdown-menu');
+	        var isRGBModeEnabled = false;
+	        var lastNotificationItem = null;
+	        var notificationShownAfterSwitch = false;
+
+	        function switchTheme() {
+	            if (isRGBModeEnabled) {
+	                document.body.classList.remove(themes[currentThemeIndex]);
+	                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
+	                document.body.classList.add(themes[currentThemeIndex]);
+	                if (!notificationShownAfterSwitch) {
+	                    var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+	                    showNotification(message);
+	                    notificationShownAfterSwitch = true;
+	                }
+	            }
+	        }
+
+	        var switchInterval = setInterval(switchTheme, 150);
+
+	        switchThemeMenuItem.addEventListener('click', function () {
+	            isRGBModeEnabled = !isRGBModeEnabled;
+	            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+	            showNotification(message);
+	            notificationShownAfterSwitch = false;
+
+	            if (!isRGBModeEnabled) {
+	                clearInterval(switchInterval);
+	            }
+
+	            // Change the image source based on RGB mode
+	            var profileImage = document.getElementById('profileImage');
+	            profileImage.src = isRGBModeEnabled ? 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar_rgb.gif' : 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar.gif';
+	        });
+
+	        function showNotification(message) {
+	            if (lastNotificationItem) {
+	                notificationContainer.removeChild(lastNotificationItem);
+	            }
+	            var notificationItem = document.createElement('a');
+	            notificationItem.href = '#';
+	            notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
+	            notificationItem.innerHTML = `
+	                <div class="fs-20px">
+	                    <i class="bi bi-eyedropper text-theme"></i>
+	                </div>
+	                <div class="flex-1 flex-wrap ps-4">
+	                    <div class="mb-1 text-white">${message}</div>
+	                    <div class="small">JUST NOW</div>
+	                </div>
+	                <div class="ps-2 fs-16px">
+	                    <i class="bi bi-chevron-right"></i>
+	                </div>
+	            `;
+	            lastNotificationItem = notificationItem;
+	            notificationContainer.appendChild(notificationItem);
+	        }
+	    });
+	</script>
 </head>
 	<body class="theme-cyan">
 		<!-- BEGIN #app -->
@@ -135,7 +169,7 @@
 						<span class="brand-img">
 							<span class="brand-img-text text-theme theme-cyan">1x</span>
 						</span>
-						<span class="brand-text"></span>
+						<span id="brand-text" class="brand-text">Loading...</span>
 					</a>
 				</div>
 				<!-- END brand -->
@@ -232,7 +266,7 @@
 				<div class="menu-item dropdown dropdown-mobile-full">
 					<a href="#" data-bs-toggle="dropdown" data-bs-display="static" class="menu-link">
 						<div class="menu-img online">
-							<img src="https://raw.githubusercontent.com/fbilmao/ffff/main/avatar.gif" alt="Profile" height="60" />
+							<img id="profileImage" src="https://raw.githubusercontent.com/fbilmao/ffff/main/avatar.gif" alt="Profile" height="60" />
 						</div>
 						<div class="menu-text d-sm-block d-none">guest</div>
 					</a>
