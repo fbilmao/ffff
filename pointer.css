@@ -1,7 +1,6 @@
 body {
   background: #333;
   height: 100vh;
-  cursor: none;
 }
 .cursor {
   position: absolute;
@@ -21,7 +20,6 @@ body {
   border-radius: 50%;
   opacity: 0.5;
   top: -8px;
-  left: -8px;
   animation: cursorAnim2 0.5s infinite alternate;
 }
 
