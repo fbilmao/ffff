@@ -24,44 +24,60 @@
             color: initial !important;
         }
     </style>
+	<style>
+	    .menu-icon i, .breadcrumb {
+	        color: var(--theme-cyan) !important;
+	    }
+	    .no-theme-change {
+	        color: initial !important;
+	    }
+	    .brand-text {
+	        transition: all 0.5s ease;
+	    }
+	    .blur-text {
+	        filter: blur(1px);
+	    }
+	</style>
 	<script>
 	    document.addEventListener('DOMContentLoaded', function () {
+	        var brandText = document.getElementById('brand-text');
+	        var timeInterval;
 	        function updateTime() {
 	            var currentTime = new Date();
 	            var hours = currentTime.getHours();
 	            var minutes = currentTime.getMinutes();
 	            var seconds = currentTime.getSeconds();
-
-	            // Pad single-digit minutes and seconds with a leading zero
 	            minutes = (minutes < 10) ? "0" + minutes : minutes;
 	            seconds = (seconds < 10) ? "0" + seconds : seconds;
-
-	            // Display time in format HH:mm:ss
 	            return hours + ":" + minutes + ":" + seconds;
 	        }
-
-	        var brandText = document.getElementById('brand-text');
-
 	        function updateBrandText() {
 	            brandText.innerHTML = updateTime();
+	            brandText.classList.remove('blur-text'); // Remove blur class
 	        }
-
-	        // Update the time every second
-	        var timeInterval = setInterval(updateBrandText, 1000);
-
+	        timeInterval = setInterval(updateBrandText, 1000);
 	        brandText.addEventListener('mouseover', function () {
-	            // Change content to a random placeholder text when hovered
-	            var placeholders = [" Welcome!", " insert meme string", " Main", " Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
-	            var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
-	            brandText.innerHTML = randomPlaceholder;
+	            if (!brandText.classList.contains('blur-text')) {
+	                brandText.classList.add('blur-text'); // Add blur class only if not already blurred
+	            }
+	            clearInterval(timeInterval); // Stop updating time
+	            setTimeout(function () {
+	                var placeholders = [" Welcome!", " insert meme string", " Main", " Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
+	                var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
+	                brandText.innerHTML = randomPlaceholder;
+	                brandText.classList.remove('blur-text'); // Remove blur class
+	            }, 300);
 	        });
-
 	        brandText.addEventListener('mouseout', function () {
-	            // Revert to displaying current time when not hovered
-	            brandText.innerHTML = updateTime();
+	            brandText.classList.add('blur-text'); // Add blur class
+	            setTimeout(function () {
+	                updateBrandText();
+	                brandText.classList.remove('blur-text'); // Remove blur class
+	                // Resume updating time after easing out
+	                timeInterval = setInterval(updateBrandText, 1000);
+	            }, 300);
 	        });
 	    });
-
 	    document.addEventListener('DOMContentLoaded', function () {
 	        var themes = [
 	            'theme-red',
@@ -82,7 +98,6 @@
 	        var isRGBModeEnabled = false;
 	        var lastNotificationItem = null;
 	        var notificationShownAfterSwitch = false;
-
 	        function switchTheme() {
 	            if (isRGBModeEnabled) {
 	                document.body.classList.remove(themes[currentThemeIndex]);
@@ -95,9 +110,7 @@
 	                }
 	            }
 	        }
-
-	        var switchInterval = setInterval(switchTheme, 150);
-
+	        var switchInterval = setInterval(switchTheme, 1000); // Set the interval to match the text switching time
 	        switchThemeMenuItem.addEventListener('click', function () {
 	            isRGBModeEnabled = !isRGBModeEnabled;
 	            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
@@ -107,12 +120,9 @@
 	            if (!isRGBModeEnabled) {
 	                clearInterval(switchInterval);
 	            }
-
-	            // Change the image source based on RGB mode
 	            var profileImage = document.getElementById('profileImage');
 	            profileImage.src = isRGBModeEnabled ? 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar_rgb.gif' : 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar.gif';
 	        });
-
 	        function showNotification(message) {
 	            if (lastNotificationItem) {
 	                notificationContainer.removeChild(lastNotificationItem);
