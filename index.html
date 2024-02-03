@@ -33,11 +33,15 @@
 	    }
 	</style>
 	<script>
-	    document.addEventListener('DOMContentLoaded', function () {
-	        var brandText = document.getElementById('brand-text');
+	    
+		document.addEventListener('DOMContentLoaded', function () {
+	        
+			var brandText = document.getElementById('brand-text');
 	        var timeInterval;
+			
 			function updateTime() {
-			    var currentTime = new Date();
+			    
+				var currentTime = new Date();
 			    var hours = currentTime.getHours();
 			    var minutes = currentTime.getMinutes();
 			    var seconds = currentTime.getSeconds();
@@ -48,11 +52,13 @@
 			    milliseconds = (milliseconds < 10) ? "0" + milliseconds : milliseconds;
 			    return hours + ":" + minutes + ":" + seconds + ":" + milliseconds;
 			}
-	        function updateBrandText() {
+	        
+			function updateBrandText() {
 	            brandText.innerHTML = updateTime();
 	            brandText.classList.remove('blur-text'); // Remove blur class
 	        }
-	        timeInterval = setInterval(updateBrandText, 0);
+	        
+			timeInterval = setInterval(updateBrandText, 0);
 	        brandText.addEventListener('mouseover', function () {
 	            if (!brandText.classList.contains('blur-text')) {
 	                brandText.classList.add('blur-text'); // Add blur class only if not already blurred
@@ -65,7 +71,8 @@
 	                brandText.classList.remove('blur-text'); // Remove blur class
 	            }, 300);
 	        });
-	        brandText.addEventListener('mouseout', function () {
+	        
+			brandText.addEventListener('mouseout', function () {
 	            brandText.classList.add('blur-text'); // Add blur class
 	            setTimeout(function () {
 	                updateBrandText();
@@ -75,8 +82,10 @@
 	            }, 300);
 	        });
 	    });
-	    document.addEventListener('DOMContentLoaded', function () {
-	        var themes = [
+	    
+		document.addEventListener('DOMContentLoaded', function () {
+	        
+			var themes = [
 	            'theme-red',
 	            'theme-orange',
 	            'theme-yellow',
@@ -89,42 +98,48 @@
 	            'theme-pink',
 	            'theme-indigo',
 	        ];
-	        var currentThemeIndex = 0;
+	        
+			var currentThemeIndex = 0;
 	        var switchThemeMenuItem = document.querySelector('.menu-item-switch-theme');
 	        var notificationContainer = document.querySelector('.dropdown-menu');
 	        var isRGBModeEnabled = false;
 	        var lastNotificationItem = null;
 	        var notificationShownAfterSwitch = false;
-	        function switchTheme() {
+	        
+			function switchTheme() {
 	            if (isRGBModeEnabled) {
 	                document.body.classList.remove(themes[currentThemeIndex]);
 	                currentThemeIndex = (currentThemeIndex + 1) % themes.length;
 	                document.body.classList.add(themes[currentThemeIndex]);
-	                if (!notificationShownAfterSwitch) {
-	                    var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+	                if (!notificationShownAfterSwitch) {	                 
+						var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
 	                    showNotification(message);
 	                    notificationShownAfterSwitch = true;
 	                }
 	            }
 	        }
-	        var switchInterval = setInterval(switchTheme, 1000); // Set the interval to match the text switching time
+	        
+			var switchInterval = setInterval(switchTheme, 1000); // Set the interval to match the text switching time
 	        switchThemeMenuItem.addEventListener('click', function () {
 	            isRGBModeEnabled = !isRGBModeEnabled;
-	            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
+	     
+				var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
 	            showNotification(message);
 	            notificationShownAfterSwitch = false;
-
 	            if (!isRGBModeEnabled) {
 	                clearInterval(switchInterval);
 	            }
-	            var profileImage = document.getElementById('profileImage');
+	            
+				var profileImage = document.getElementById('profileImage');
 	            profileImage.src = isRGBModeEnabled ? 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar_rgb.gif' : 'https://raw.githubusercontent.com/fbilmao/ffff/main/avatar.gif';
 	        });
-	        function showNotification(message) {
+	        
+			function showNotification(message) {
 	            if (lastNotificationItem) {
 	                notificationContainer.removeChild(lastNotificationItem);
 	            }
-	            var notificationItem = document.createElement('a');
+	            
+				var notificationItem = document.createElement('a');
 	            notificationItem.href = '#';
 	            notificationItem.className = 'd-flex align-items-center py-10px dropdown-item text-wrap';
 	            notificationItem.innerHTML = `
@@ -143,6 +158,7 @@
 	            notificationContainer.appendChild(notificationItem);
 	        }
 	    });
+		
 	</script>
 </head>
 	<body class="theme-cyan">
