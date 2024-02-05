@@ -7,16 +7,16 @@
     <meta name="theme-color" content="#00b7ff">
     <meta name="author" content="" />
     <meta name="description" content="" />
-    <meta property="og:title" content="GTA PC Products & Services (Under developement)">
-    <meta property="og:description" content="Find the best GTA V Online products & services, trustable and 100% undetected.">
+    <meta property="og:title" content="Steam Full Access Accounts [OGE & Non-OGE] @ 1x beta">
+    <meta property="og:description" content="Very friendly gaming related website!">
     <meta property="og:image" content="https://raw.githubusercontent.com/fbilmao/ffff/main/embed.gif">
     <meta property="og:url" content="https://fbilmao.github.io/ffff/">
-    <title>1x :: GTA Related</title>
+    <title>1x :: Steam Full Access</title>
+    <link rel="stylesheet" href="assets/css/cursor.css"/>
     <link rel="icon" href="favicon.ico" type="image/x-icon"><link rel="apple-touch-icon" sizes="192x192" href="android-chrome-192x192.png"><link rel="apple-touch-icon" sizes="512x512" href="android-chrome-512x512.png"><link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png"><link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png"><link rel="icon" href="favicon.ico">
     <!-- ================== BEGIN core-css ================== -->
     <link href="assets/css/vendor.min.css" rel="stylesheet" />
     <link href="assets/css/app.min.css" rel="stylesheet" />
-    <link href="assets/css/cursor.css" rel="stylesheet" />
     <!-- ================== END core-css ================== -->
 	<style>
 	    .menu-icon i, .breadcrumb {
@@ -47,27 +47,26 @@
 	        }
 	        function updateBrandText() {
 	            brandText.innerHTML = updateTime();
-	            brandText.classList.remove('blur-text'); // Remove blur class
+	            brandText.classList.remove('blur-text');
 	        }
 	        timeInterval = setInterval(updateBrandText, 1000);
 	        brandText.addEventListener('mouseover', function () {
 	            if (!brandText.classList.contains('blur-text')) {
-	                brandText.classList.add('blur-text'); // Add blur class only if not already blurred
+	                brandText.classList.add('blur-text');
 	            }
-	            clearInterval(timeInterval); // Stop updating time
+	            clearInterval(timeInterval);
 	            setTimeout(function () {
 	                var placeholders = [" Welcome!", " insert meme string", " Main", " Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
 	                var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
 	                brandText.innerHTML = randomPlaceholder;
-	                brandText.classList.remove('blur-text'); // Remove blur class
+	                brandText.classList.remove('blur-text');
 	            }, 300);
 	        });
 	        brandText.addEventListener('mouseout', function () {
-	            brandText.classList.add('blur-text'); // Add blur class
+	            brandText.classList.add('blur-text');
 	            setTimeout(function () {
 	                updateBrandText();
-	                brandText.classList.remove('blur-text'); // Remove blur class
-	                // Resume updating time after easing out
+	                brandText.classList.remove('blur-text');
 	                timeInterval = setInterval(updateBrandText, 1000);
 	            }, 300);
 	        });
@@ -104,7 +103,7 @@
 	                }
 	            }
 	        }
-	        var switchInterval = setInterval(switchTheme, 1000); // Set the interval to match the text switching time
+	        var switchInterval = setInterval(switchTheme, 1000);
 	        switchThemeMenuItem.addEventListener('click', function () {
 	            isRGBModeEnabled = !isRGBModeEnabled;
 	            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
