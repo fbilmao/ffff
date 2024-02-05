@@ -47,27 +47,26 @@
 	        }
 	        function updateBrandText() {
 	            brandText.innerHTML = updateTime();
-	            brandText.classList.remove('blur-text'); // Remove blur class
+	            brandText.classList.remove('blur-text');
 	        }
 	        timeInterval = setInterval(updateBrandText, 1000);
 	        brandText.addEventListener('mouseover', function () {
 	            if (!brandText.classList.contains('blur-text')) {
-	                brandText.classList.add('blur-text'); // Add blur class only if not already blurred
+	                brandText.classList.add('blur-text');
 	            }
-	            clearInterval(timeInterval); // Stop updating time
+	            clearInterval(timeInterval);
 	            setTimeout(function () {
 	                var placeholders = [" Welcome!", " insert meme string", " Main", " Ethical and leet", " Operating since 1991!", " Hosted on the moon!", " very pasted", " bypassing BSOD!", " Big forum name", " 13:37:00", " skrrr."];
 	                var randomPlaceholder = placeholders[Math.floor(Math.random() * placeholders.length)];
 	                brandText.innerHTML = randomPlaceholder;
-	                brandText.classList.remove('blur-text'); // Remove blur class
+	                brandText.classList.remove('blur-text');
 	            }, 300);
 	        });
 	        brandText.addEventListener('mouseout', function () {
-	            brandText.classList.add('blur-text'); // Add blur class
+	            brandText.classList.add('blur-text');
 	            setTimeout(function () {
 	                updateBrandText();
-	                brandText.classList.remove('blur-text'); // Remove blur class
-	                // Resume updating time after easing out
+	                brandText.classList.remove('blur-text');
 	                timeInterval = setInterval(updateBrandText, 1000);
 	            }, 300);
 	        });
@@ -104,7 +103,7 @@
 	                }
 	            }
 	        }
-	        var switchInterval = setInterval(switchTheme, 1000); // Set the interval to match the text switching time
+	        var switchInterval = setInterval(switchTheme, 1000);
 	        switchThemeMenuItem.addEventListener('click', function () {
 	            isRGBModeEnabled = !isRGBModeEnabled;
 	            var message = isRGBModeEnabled ? 'RGB Mode enabled' : 'RGB Mode disabled';
@@ -156,7 +155,6 @@
 					</button>
 				</div>
 				<!-- BEGIN desktop-toggler -->
-				
 				<!-- BEGIN mobile-toggler -->
 				<div class="mobile-toggler">
 					<button type="button" class="menu-toggler" data-toggle-class="app-sidebar-mobile-toggled" data-toggle-target=".app">
@@ -177,7 +175,6 @@
 					</a>
 				</div>
 				<!-- END brand -->
-				
 				<!-- BEGIN menu -->
 				<div class="menu">
 					<div class="menu-item dropdown">
@@ -285,7 +282,6 @@
 				</div>
 			</div>
 			<!-- END menu -->
-			
 			<!-- BEGIN menu-search -->
 			<form class="menu-search" method="POST" name="header_search_form">
 				<div class="menu-search-container">
@@ -301,7 +297,6 @@
 			<!-- END menu-search -->
 		</div>
 		<!-- END #header -->
-		
 		<!-- BEGIN #sidebar -->
 		<div id="sidebar" class="app-sidebar">
 			<!-- BEGIN scrollbar -->
@@ -419,11 +414,9 @@
 			<!-- END scrollbar -->
 		</div>
 		<!-- END #sidebar -->
-			
 		<!-- BEGIN mobile-sidebar-backdrop -->
 		<button class="app-sidebar-mobile-backdrop" data-toggle-target=".app" data-toggle-class="app-sidebar-mobile-toggled"></button>
 		<!-- END mobile-sidebar-backdrop -->
-		
 		<!-- BEGIN #content -->
 		<div id="content" class="app-content">
 			<ul class="breadcrumb no-theme-change">
@@ -431,7 +424,6 @@
 				<li class="breadcrumb-item theme-cyan"><a href="#">Steam & CS:2</a></li>
 				<li class="breadcrumb-item active">Full Access</li>
 			</ul>
-			
 			<h1 class="page-header">
 				Soon.
 			</h1>
